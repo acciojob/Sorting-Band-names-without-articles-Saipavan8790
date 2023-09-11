@@ -16,6 +16,6 @@ articleLessArray.sort();
 let ans = [];
 for(let i of articleLessArray)
 	{
-		ans = push(mp[i]);
+		ans.push(mp[i]);
 	}
 console.log(ans);
