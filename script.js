@@ -6,6 +6,7 @@ let regexp = /\bthe\b|\ban\|\ba\b/gi;
 for(let i=0; i<arr.length; i=i+1)
 	{
 		let temp = arr[i].replace(regexp, "").trim();
+		temp = temp.replace(/  /g, " ");
 		articleLessArray.push(temp);
 		mp[temp] = arr[i];
 	}
