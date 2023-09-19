@@ -1,20 +1,30 @@
+/* Your CSS code here. */
 //your code here
+// Function to remove articles from band names for comparison
+function removeArticles(name) {
+  return name.replace(/^(a|an|the)\s+/i, '');
+}
 
-let bandNames = ['The Beatles', 'Pink Floyd', 'Led Zeppelin', 'The Rolling Stones', 'The Who'];
+// Array of band names
+let bandNames = ['The Rolling Stones', 'The Beatles', 'Aerosmith', 'Led Zeppelin', 'Nirvana', 'Pink Floyd'];
 
-// remove articles from band names
-const removeArticle = (name) => {
-  return name.replace(/^(a|an|the)\s+/i, '').trim();
-};
-bandNames = bandNames.map(removeArticle);
-
-// sort band names in lexicographic order
-bandNames.sort((a, b) => a.localeCompare(b));
-
-// display band names in an unordered list
-const bandList = document.getElementById('band');
-bandNames.forEach((name) => {
-  const listItem = document.createElement('li');
-  listItem.textContent = name;
-  bandList.appendChild(listItem);
+// Sort the band names without articles
+bandNames.sort((a, b) => {
+  const nameA = removeArticles(a).toLowerCase();
+  const nameB = removeArticles(b).toLowerCase();
+  return nameA.localeCompare(nameB);
 });
+
+// Create an ul element
+const ul = document.createElement('ul');
+ul.id = 'band';
+
+// Add each sorted band name as an li element
+bandNames.forEach((name) => {
+  const li = document.createElement('li');
+  li.textContent = name;
+  ul.appendChild(li);
+});
+
+// Add the ul to the document
+document.body.appendChild(ul)
